@@ -1,0 +1,14 @@
+{
+	"background_color": "#222",
+	"theme_color": "#ff3e00",
+	"display": "fullscreen",
+	"description": "Svelte url shortener app",
+	"name": "Url shortener",
+	"short_name": "UrlShort",
+	"start_url": "/",
+	"icons": [{
+		"src": "app_logo.png",
+		"sizes": "512x512",
+		"type": "image/png"
+	}]
+}
