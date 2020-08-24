@@ -1,5 +1,4 @@
 <script>
-
 	const newBaseUrl = 'https://rel.ink/';
 
 	let isInvalid;
@@ -7,7 +6,14 @@
 	let url;
 	let shortenedUrl;
 
-	$: disabledButtonTitle = !url ? 'Disabled action because url is empty' : '';
+	$: urlTrimmed = url ? url.trim() : '';
+	$: disabledButtonTitle = !urlTrimmed ? 'Disabled action because url is empty' : '';
+
+	function resetData() {
+		isInvalid = false;
+		errorDetails = null;
+		shortenedUrl = '';
+	}
 
 	function shortUrl() {
 		if(!url) return;
@@ -50,16 +56,18 @@
 		placeholder="Enter url here"
 		class="url-input"
 		type="url"
-		bind:value={url}/>
+		bind:value={url}
+		on:input="{resetData}"/>
 	<button
-		disabled={!url}
+		disabled={!urlTrimmed}
 		title={disabledButtonTitle}
-		on:click={shortUrl}>Short Url !</button>
+		on:click={shortUrl}>Short Url !
+	</button>
 
 	{#if url}
-		<h1>Base url: <a href={url}>{url}</a></h1>
+		<h1>Base url: <a target="_blank" href={url}>{url}</a></h1>
 		{#if shortenedUrl}
-			<h1>Shortened url: <a href={shortenedUrl}>{shortenedUrl}</a></h1>
+			<h1>Shortened url: <a target="_blank" href={shortenedUrl}>{shortenedUrl}</a></h1>
 		{/if}
 	{/if}
 
@@ -70,10 +78,6 @@
 </main>
 
 <style>
-	.application-logo {
-		width: 25%;
-	}
-
 	.url-input {
 		width: 100%;
 	}
@@ -81,4 +85,5 @@
 	.error-label {
 		color: #ff3e00;
 	}
+
 </style>

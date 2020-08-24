@@ -16,12 +16,4 @@
 	.application-logo {
 		width: 25%;
 	}
-
-	.url-input {
-		width: 100%;
-	}
-
-	.error-label {
-		color: #ff3e00;
-	}
 </style>
