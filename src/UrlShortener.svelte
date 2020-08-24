@@ -51,13 +51,17 @@
 </script>
 
 <main>
-	<input
-		required
-		placeholder="Enter url here"
-		class="url-input"
-		type="url"
-		bind:value={url}
-		on:input="{resetData}"/>
+	<!-- https://codepen.io/finnhvman/pen/xyOORQ -->
+	<label>
+		Url to short
+		<input
+			required
+			placeholder="Enter url here"
+			class="url-input"
+			type="url"
+			bind:value={url}
+			on:input="{resetData}"/>
+	</label>
 	<button
 		disabled={!urlTrimmed}
 		title={disabledButtonTitle}
