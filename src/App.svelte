@@ -1,5 +1,5 @@
 <script>
-	import UrlShortener from './UrlShortener.svelte';
+	import UrlShortener from './url/UrlShortener.svelte';
 </script>
 
 <main>
