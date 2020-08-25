@@ -18,7 +18,9 @@
 		}
 	}
 	const onPressEnter = () => { shortUrl() }
-	const onInput = ()  => { resetData() }
+	const onInput = (e)  => { 
+		url = e.target.value;
+	 }
 
 	const resetData = () => {
 		isInvalid = false;
@@ -43,9 +45,8 @@
 	<UrlInput 
 		value="{url}"
 		label="Url to short"
-		on:onKeyUp={onKeyUp}
-		on:onPressEnter={onPressEnter}
-		on:onInput={onInput}/>
+		on:press-enter={onPressEnter}
+		on:input={onInput}/>
 	<Button
 		isDisabled={!urlTrimmed}
 		label="Shorten Url !"

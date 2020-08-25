@@ -6,14 +6,9 @@
 	export let value;
 	export let label;
 
-	const onInput = () => dispatch('onInput');
 	const onKeyUp = (event) => {
 		if(event && event.key && event.key === 'Enter') {
-			dispatch('onPressEnter');
-		} else {
-			dispatch('onKeyUp', {
-				value: event && event.target && event.target.value
-			});
+			dispatch('press-enter');
 		}
 	};
 </script>
@@ -26,7 +21,7 @@
 				class="url-input"
 				type="url"
 				value={value}
-				on:input={onInput}
+				on:input
 				on:keyup={onKeyUp}/>
 			<span>
 				{label}
