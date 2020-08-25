@@ -1,5 +1,6 @@
 <script>
 	import UrlInput from './UrlInput.svelte';
+	import Button from './Button.svelte';
 
 	const newBaseUrl = 'https://rel.ink/';
 
@@ -15,7 +16,8 @@
 		if(event && event.detail && event.detail.value) {
 			url = event.detail.value;
 		}
-	 }
+	}
+	const onPressEnter = () => { shortUrl() }
 	const onInput = ()  => { resetData() }
 
 	const resetData = () => {
@@ -24,7 +26,7 @@
 		shortenedUrl = '';
 	}
 
-	function shortUrl() {
+	const shortUrl = () => {
 		if(!url) return;
 
 		const options = {
@@ -64,13 +66,13 @@
 		value="{url}"
 		label="Url to short"
 		on:onKeyUp={onKeyUp}
+		on:onPressEnter={onPressEnter}
 		on:onInput={onInput}/>
-	<button
-		disabled={!urlTrimmed}
+	<Button
+		isDisabled={!urlTrimmed}
+		label="Shorten Url !"
 		title={disabledButtonTitle}
-		on:click={shortUrl}>
-		Short Url !
-	</button>
+		on:onClick={shortUrl}/>
 
 	{#if url}
 		<h1>Base url: <a target="_blank" href={url}>{url}</a></h1>
@@ -86,11 +88,8 @@
 </main>
 
 <style>
-	element {
-		--main-color: #ff3e00;
-	}
 	.error-label {
-		color: --main-color;
+		color: #ff3e00;
 	}
 
 </style>

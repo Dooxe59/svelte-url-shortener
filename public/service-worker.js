@@ -1,4 +1,4 @@
-const CACHE_NAME = `cache_${1598341916794}`;
+const CACHE_NAME = `cache_${1598343221131}`;
 
 const shell = [
 	'/',
