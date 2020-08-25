@@ -1,8 +1,8 @@
 <script>
 	import UrlInput from './UrlInput.svelte';
-	import Button from './Button.svelte';
+	import Button from '../Button.svelte';
 
-	const newBaseUrl = 'https://rel.ink/';
+	import { shortenUrl } from './UrlShortener.js';
 
 	let isInvalid;
 	let errorDetails;
@@ -27,37 +27,15 @@
 	}
 
 	const shortUrl = () => {
-		if(!url) return;
-
-		const options = {
-			method: 'POST',
-			body: JSON.stringify({
-				url,
-			}),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		};
-
-		fetch('https://rel.ink/api/links/', options)
-			.then(res => {
-				return res.json();
+		isInvalid = false;
+		shortenUrl(url)
+			.then((newUrl) => {
+				shortenedUrl = newUrl;
 			})
-			.then(data => {
-				if(data && data.hashid) {
-					isInvalid = false;
-					shortenedUrl = newBaseUrl + data.hashid;
-				} else {
-					isInvalid = true;
-					if(data && data.url && data.url.length) {
-						errorDetails = data.url[0];
-					}
-				}
-			})
-			.catch(err => {
+			.catch((err) => {
 				isInvalid = true;
 				errorDetails = err;
-			});
+			})
 	}
 </script>
 
