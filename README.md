@@ -5,6 +5,7 @@ This application takes a web address and transform it into a new reduced address
 # ToDo:
 - Loading request status
 - Bug: On delete input value, reset all data
+- https://shields.io/
 
 ## Get started
 

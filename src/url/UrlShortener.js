@@ -40,3 +40,19 @@ export const shortenUrl = (url) => {
             return newBaseUrl + data.hashid;
         });
 }
+
+export const getDateTimeNow = () => {
+    const date = new Date();
+    const hours = formatTimeNumber(date.getHours());
+    const minutes = formatTimeNumber(date.getMinutes());
+    const seconds = formatTimeNumber(date.getSeconds());
+
+    return `${hours}:${minutes}:${seconds}`;
+}
+
+const formatTimeNumber = (number) => {
+    if(number !== undefined && number !== null) {
+        return number <= 9 ? `0${number}` : number;
+    }
+    return null;
+};
