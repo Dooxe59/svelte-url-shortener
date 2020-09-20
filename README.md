@@ -9,7 +9,7 @@ Demo available here: <a href="svelte-url-shortener.vercel.app">svelte-url-shorte
 ### ToDo list:
 - Loading request status
 - Bug: On delete input value, reset all data
-- https://shields.io/
+- Style history
 
 
 
